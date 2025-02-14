@@ -1,14 +1,20 @@
-
+"use client";
 import Image from "next/image";
-import LoginLogo from "../../../public/Assets/user/darklogowithtext@2x.png";
-import Button from "../../components/element/Button";
-import Input from "../../components/element/Input";
+import LoginLogo from "../../../../public/Assets/user/darklogowithtext.svg";
+import Button from "../../../components/element/Button";
+import Input from "../../../components/element/Input";
 const page = () => {
   return (
     <div className="bg-[#F6F5F7] py-8 gap-5 flex-col  justify-center flex items-center overflow-x-hidden ">
       <div className="w-[520px] text-center  px-10 py-10 gap-4 flex flex-col items-center  rounded-[18px] bg-white border-[0.5px] border-gray-300">
         {" "}
-        <Image src={LoginLogo.src} width={150} height={150} className=" object-contain" alt="" />
+        <Image
+          src={LoginLogo.src}
+          width={150}
+          height={150}
+          className="object-contain"
+          alt="Loginlogo"
+        />
         <h5 className="text-[28px] font-bold leading-[30px] ">
           Personal Information.
         </h5>

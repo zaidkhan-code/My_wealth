@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 const Input = ({ label, placeholder, type = "text", ...props }) => {
   console.log(type, "check type please");
