@@ -46,8 +46,8 @@ const PasswordPage = () => {
     }
   };
   return (
-    <div className="bg-[#F6F5F7] w-full  py-8 gap-6 flex-col h-screen justify-center flex items-center overflow-x-hidden">
-      <div className="w-[520px] text-center  px-10 py-10 gap-4 flex flex-col items-center  rounded-[18px] bg-white border-[0.5px] border-gray-300 ">
+    <div className="bg-[#F6F5F7] w-full  py-8 gap-6 flex-col min-h-screen justify-center flex items-center overflow-x-hidden">
+      <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-center px-4 sm:px-10 py-10 gap-4 flex flex-col items-center  rounded-[18px] bg-white border-[0.5px] border-gray-300 ">
         <div className="flex  flex-row gap-5">
           <Image
             width={150}
@@ -57,7 +57,7 @@ const PasswordPage = () => {
             alt=""
           />
         </div>
-        <h5 className="text-[28px] font-bold text-black leading-[30px] ">
+        <h5 className="text-[20px] sm:text-[28px] font-bold text-black leading-[30px] ">
           Choose your password.{" "}
         </h5>
 
@@ -82,7 +82,7 @@ const PasswordPage = () => {
           </button>
         </div>
         <div className="flex w-full flex-col items-start gap-1">
-          <label className=" text-[14px] font-semibold text-gray-700">
+          <label className=" text-[14px] sm:text-[18px] font-semibold text-gray-700">
             Strength
           </label>
           <div className="h-3 bg-gray-200 overflow-hidden w-full rounded">
@@ -92,11 +92,14 @@ const PasswordPage = () => {
           </div>
         </div>
 
-        <p className="text-[15px]  mb-6 text-gray-900 leading-[20px] font-medium ">
+        <p className="text-[13px] sm:text-[15px]  mb-6 text-gray-500 leading-[20px] font-medium text-center ">
           Password should be long enough, unique to you and difficult to other
           to guess.
         </p>
         <Button text="Continue" />
+        <p className="text-[11px] sm:hidden mb-6 text-gray-900 leading-[20px] font-medium text-center ">
+         This site is protected by Google&apos;s <a href="#" className="text-blue-600">Privacy Policy</a> and <a href="#" className="text-blue-600">Terms of Service</a> apply
+        </p>
       </div>
     </div>
   );
