@@ -47,7 +47,7 @@ const PasswordPage = () => {
   };
   return (
     <div className="bg-[#F6F5F7] w-full  py-8 gap-6 flex-col min-h-screen justify-center flex items-center overflow-x-hidden">
-      <div className="md:w-[520px] max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-center px-4 sm:px-10 py-10 gap-4 flex flex-col items-center  rounded-[18px] bg-white border-[0.5px] border-gray-300 ">
+      <div className="md:w-[520px] max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-center px-10 py-10 gap-4 flex flex-col items-center  rounded-[18px] bg-white border-[0.5px] border-gray-300 ">
         <div className="flex  flex-row gap-5">
           <Image
             width={150}
