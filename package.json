@@ -20,6 +20,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/stack-utils": "^2.0.3",
+    "@types/yargs": "^17.0.33",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "postcss": "^8",
