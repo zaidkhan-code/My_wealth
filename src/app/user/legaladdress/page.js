@@ -8,8 +8,7 @@ import Input from "../../../components/element/Input";
 const LegalAddressPage = () => {
   return (
     <div className="bg-white md:bg-[#F6F5F7] min-h-screen flex flex-col items-center justify-center p-4">
-      <div className="md:max-w-[450px] height=[852px] width-[392px] md:bg-white p-6 md:p-8 md:rounded-[18px] md:shadow-md md:border md:border-gray-200 text-center">
-        
+      <div className="md:max-w-[450px] height=[852px] w-full md:bg-white p-2 md:p-8 md:rounded-[18px] md:shadow-md md:border md:border-gray-200 text-center">
         {/* Logo */}
         <div className="flex justify-center mb-4">
           {/* Mobile Image */}
@@ -37,7 +36,8 @@ const LegalAddressPage = () => {
 
         {/* Description */}
         <p className="text-[7px] md:text-[14px] text-black mt-2 w-full max-w-[348px] md:max-w-[402px] min-h-[32px] md:min-h-[38px] leading-relaxed">
-          Enter the address in your National ID or residence permit.<br />
+          Enter the address in your National ID or residence permit.
+          <br />
           You’ll need to verify it later.
         </p>
 
@@ -60,8 +60,14 @@ const LegalAddressPage = () => {
       {/* Privacy Policy */}
       <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed">
         This site is protected by Google's{" "}
-        <a href="#" className="text-blue-600">Privacy Policy</a> and{" "}
-        <a href="#" className="text-blue-600">Terms of Service</a> apply.
+        <a href="#" className="text-blue-600">
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a href="#" className="text-blue-600">
+          Terms of Service
+        </a>{" "}
+        apply.
       </p>
     </div>
   );
