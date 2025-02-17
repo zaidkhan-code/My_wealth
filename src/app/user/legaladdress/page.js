@@ -8,7 +8,7 @@ import Input from "../../../components/element/Input";
 const LegalAddressPage = () => {
   return (
     <div className="bg-white md:bg-[#F6F5F7] min-h-screen flex flex-col items-center justify-center p-4">
-      <div className="md:max-w-[450px] height=[852px] w-full md:bg-white p-2 md:p-8 md:rounded-[18px] md:shadow-md md:border md:border-gray-200 text-center">
+      <div className="md:max-w-[450px] height=[852px] w-full md:bg-white p-1 md:p-8 md:rounded-[18px] md:shadow-md md:border md:border-gray-200 text-center">
         {/* Logo */}
         <div className="flex justify-center mb-4">
           {/* Mobile Image */}
@@ -30,12 +30,12 @@ const LegalAddressPage = () => {
         </div>
 
         {/* Title */}
-        <h2 className="text-[15px] md:text-[22px] font-bold text-gray-900 w-full max-w-[262px] md:max-w-[418px] min-h-[25px] md:min-h-[40px] leading-snug text-center">
+        <h2 className="text-[15px] md:text-[22px] font-bold mx-auto text-gray-900 w-full max-w-[262px] md:max-w-[418px] min-h-[25px] md:min-h-[40px] leading-snug text-center">
           What’s your legal address?
         </h2>
 
         {/* Description */}
-        <p className="text-[7px] md:text-[14px] text-black mt-2 w-full max-w-[348px] md:max-w-[402px] min-h-[32px] md:min-h-[38px] leading-relaxed">
+        <p className="text-[7px] md:text-[14px] mx-auto text-black mt-2 w-full max-w-[348px] md:max-w-[402px] min-h-[32px] md:min-h-[38px] leading-relaxed">
           Enter the address in your National ID or residence permit.
           <br />
           You’ll need to verify it later.

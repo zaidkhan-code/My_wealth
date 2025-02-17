@@ -15,10 +15,10 @@ const page = () => {
           className="object-contain"
           alt="Loginlogo"
         />
-        <h5 className="text-[28px] font-bold leading-[30px] ">
+        <h5 className="text-[28px] font-bold leading-[30px] mx-auto ">
           Personal Information.
         </h5>
-        <p className="text-[15px] text-gray-700 leading-[20px] font-medium max-w-[350px]">
+        <p className="text-[15px] text-gray-700 leading-[20px] mx-auto font-medium max-w-[350px]">
           Make sure this the same Information as on your passport or ID,so we
           can verify it later on
         </p>
