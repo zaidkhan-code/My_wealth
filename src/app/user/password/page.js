@@ -46,8 +46,8 @@ const PasswordPage = () => {
     }
   };
   return (
-    <div className="bg-[#F6F5F7] w-full  py-8 gap-6 flex-col min-h-screen justify-center flex items-center overflow-x-hidden">
-      <div className="md:w-[520px] max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-center px-10 py-10 gap-4 flex flex-col items-center  rounded-[18px] bg-white border-[0.5px] border-gray-300 ">
+    <div className="bg-[#F6F5F7] w-full py-6 sm:py-8 gap-6 flex-col min-h-screen justify-center flex items-center overflow-x-hidden">
+      <div className="w-[90%] sm:w-[520px] max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-center px-6 sm:px-10 py-8 sm:py-10 gap-4 flex flex-col items-center  rounded-[18px] bg-white border-[0.5px] border-gray-300 ">
         <div className="flex  flex-row gap-5">
           <Image
             width={150}
@@ -61,7 +61,7 @@ const PasswordPage = () => {
           Choose your password.{" "}
         </h5>
 
-        <div className="relative w-full mt-6">
+        <div className="relative w-full mt-4 sm:mt-6">
           <Input
             label=""
             placeholder="Password"
@@ -92,12 +92,13 @@ const PasswordPage = () => {
           </div>
         </div>
 
-        <p className="text-[13px] sm:text-[15px]  mb-6 text-gray-500 leading-[20px] font-medium text-center ">
+        <p className="text-[13px] sm:text-[15px]  mb-4 sm:mb-6 text-gray-500 leading-[20px] font-medium text-center ">
           Password should be long enough, unique to you and difficult to other
           to guess.
         </p>
-        <Button text="Continue" />
-        <p className="text-[11px] sm:hidden mb-6 text-gray-900 leading-[20px] font-medium text-center ">
+        <div className="w-full mb-8 sm:mb-6"><Button text="Continue" /></div>
+        
+        <p className="text-[11px] sm:hidden mb-6 mt-4 text-gray-900 leading-[20px] font-medium text-center ">
          This site is protected by Google&apos;s <a href="#" className="text-blue-600">Privacy Policy</a> and <a href="#" className="text-blue-600">Terms of Service</a> apply
         </p>
       </div>
@@ -106,3 +107,4 @@ const PasswordPage = () => {
 };
 
 export default PasswordPage;
+
