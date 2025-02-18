@@ -82,7 +82,7 @@ const PasswordPage = () => {
           </button>
         </div>
         <div className="flex w-full flex-col items-start gap-1">
-          <label className=" text-[14px] sm:text-[18px] font-semibold text-gray-700">
+          <label className=" text-[13px] sm:text-[18px] font-semibold text-gray-700">
             Strength
           </label>
           <div className="h-3 bg-gray-200 overflow-hidden w-full rounded">
@@ -92,13 +92,13 @@ const PasswordPage = () => {
           </div>
         </div>
 
-        <p className="text-[13px] sm:text-[15px]  mb-4 sm:mb-6 text-gray-500 leading-[20px] font-medium text-center ">
+        <p className="text-[11px] sm:text-[15px]  mb-4 sm:mb-6 text-gray-500 leading-[20px] font-medium text-center ">
           Password should be long enough, unique to you and difficult to other
           to guess.
         </p>
-        <div className="w-full mb-8 sm:mb-6"><Button text="Continue" /></div>
+        <div className="w-full mb-10 sm:mb-6"><Button text="Continue" /></div>
         
-        <p className="text-[11px] sm:hidden mb-6 mt-4 text-gray-900 leading-[20px] font-medium text-center ">
+        <p className="text-[11px] sm:hidden mt-4 text-gray-900 leading-[20px] font-medium text-center ">
          This site is protected by Google&apos;s <a href="#" className="text-blue-600">Privacy Policy</a> and <a href="#" className="text-blue-600">Terms of Service</a> apply
         </p>
       </div>
