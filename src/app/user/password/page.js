@@ -6,6 +6,8 @@ import Image from "next/image";
 import LoginLogo from "../../../../public/Assets/user/darklogowithtext@2x.png";
 import Button from "../../../components/element/Button";
 import Input from "../../../components/element/Input";
+import Logo from "../../../../public/Assets/user/Logo.png";
+
 const PasswordPage = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -46,22 +48,30 @@ const PasswordPage = () => {
     }
   };
   return (
-    <div className="bg-[#F6F5F7] w-full py-6 sm:py-8 gap-6 flex-col min-h-screen justify-center flex items-center overflow-x-hidden">
-      <div className="w-[90%] sm:w-[520px] max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-center px-6 sm:px-10 py-8 sm:py-10 gap-4 flex flex-col items-center  rounded-[18px] bg-white border-[0.5px] border-gray-300 ">
+    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
+    <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
         <div className="flex  flex-row gap-5">
           <Image
             width={150}
-            className=" object-cover "
+            className=" object-cover hidden md:block"
             src={LoginLogo}
             height={150}
             alt=""
+            
+          />
+            <Image
+            src={Logo}
+            width={44}
+            height={44}
+            className="block md:hidden"
+            alt="MyWealth Logo"
           />
         </div>
-        <h5 className="text-[20px] sm:text-[28px] font-bold text-black leading-[30px] ">
+        <h5 className="text-[20px] md:text-[28px] font-bold text-black leading-[30px] ">
           Choose your password.{" "}
         </h5>
 
-        <div className="relative w-full mt-4 sm:mt-6">
+        <div className="relative w-full mt-4 md:mt-6">
           <Input
             label=""
             placeholder="Password"
@@ -82,7 +92,7 @@ const PasswordPage = () => {
           </button>
         </div>
         <div className="flex w-full flex-col items-start gap-1">
-          <label className=" text-[13px] sm:text-[18px] font-semibold text-gray-700">
+          <label className=" text-[13px] md:text-[15px] font-semibold text-gray-700">
             Strength
           </label>
           <div className="h-3 bg-gray-200 overflow-hidden w-full rounded">
@@ -92,16 +102,19 @@ const PasswordPage = () => {
           </div>
         </div>
 
-        <p className="text-[11px] sm:text-[15px]  mb-4 sm:mb-6 text-gray-500 leading-[20px] font-medium text-center ">
+        <p className="text-[13px] md:text-[15px]  mb-4 md:mb-6 text-gray-500 leading-[20px] font-medium text-center ">
           Password should be long enough, unique to you and difficult to other
           to guess.
         </p>
-        <div className="w-full mb-10 sm:mb-6"><Button text="Continue" /></div>
+        <div className="w-full"><Button text="Continue" /></div>
         
-        <p className="text-[11px] sm:hidden mt-4 text-gray-900 leading-[20px] font-medium text-center ">
-         This site is protected by Google&apos;s <a href="#" className="text-blue-600">Privacy Policy</a> and <a href="#" className="text-blue-600">Terms of Service</a> apply
-        </p>
+      
       </div>
+      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center md:hidden ">
+        This site is protected by Google&apos;s{" "}
+        <span className="text-blue-500">Privacy Policy</span> and{" "}
+        <span className="text-blue-500">Term of service</span> Apply
+      </p>
     </div>
   );
 };
