@@ -62,7 +62,7 @@ const Page = () => {
         </div>
       </div>
 
-      <p className="text-[10px] md:text-xs  text-black text-center mt-14 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed">
+      <p className="text-[10px] md:text-xs  text-black text-center mt-4  w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed">
         This site is protected by Google's{" "}
         <a href="#" className="text-blue-600">
           Privacy Policy
