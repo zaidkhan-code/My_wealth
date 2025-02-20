@@ -7,11 +7,17 @@ import Input from "../../../components/element/Input";
 
 const LegalAddressPage = () => {
   return (
-    <div className="bg-white md:bg-[#F6F5F7] min-h-screen gap-5 flex flex-col items-center justify-center p-4">
-      <div className="md:max-w-[450px] height=[852px] w-full md:bg-white p-1 md:p-8 md:rounded-[18px] md:shadow-md md:border md:border-gray-200 text-center">
+    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
+      <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
         {/* Logo */}
-        <div className="flex justify-center mb-4">
-          {/* Mobile Image */}
+        <div className="flex  flex-row gap-5">
+          <Image
+            width={150}
+            className=" object-cover hidden md:block"
+            src={LoginLogo}
+            height={150}
+            alt=""
+          />
           <Image
             src={Logo}
             width={44}
@@ -19,55 +25,34 @@ const LegalAddressPage = () => {
             className="block md:hidden"
             alt="MyWealth Logo"
           />
-          {/* Desktop Image */}
-          <Image
-            src={LoginLogo}
-            width={120}
-            height={40}
-            className="hidden md:block"
-            alt="MyWealth Logo"
-          />
         </div>
 
         {/* Title */}
-        <h2 className="text-[15px] md:text-[22px] font-bold mx-auto text-gray-900 w-full max-w-[262px] md:max-w-[418px] min-h-[25px] md:min-h-[40px] leading-snug text-center">
+        <h5 className="text-[20px] md:text-[28px] font-bold text-black leading-[30px] ">
           What’s your legal address?
-        </h2>
+        </h5>
 
         {/* Description */}
-        <p className="text-[7px] md:text-[14px] mx-auto text-black mt-2 w-full max-w-[348px] md:max-w-[402px] min-h-[32px] md:min-h-[38px] leading-relaxed">
-          Enter the address in your National ID or residence permit.
-          <br />
-          You’ll need to verify it later.
+        <p className="text-[13px] md:text-[15px]  text-gray-500 leading-[20px] font-medium text-center ">
+          Enter the address in your National ID or residence permit. You’ll need
+          to verify it later.
         </p>
 
         {/* Form Inputs */}
-        <div className="width-[358px] height-[49px] mt-5 space-y-3">
-          <Input label="" placeholder="Address" />
-          <Input label="" placeholder="City" />
-          <div className="space-y-3 md:space-y-0 md:flex gap-3">
-            <Input label="" placeholder="Country" />
-            <Input label="" placeholder="ZIP / Postal Code" />
-          </div>
+        <Input label="" placeholder="Address" />
+        <Input label="" placeholder="City" />
+        <div className="w-[100%] justify-between gap-10 flex flex-col md:flex-row">
+          <Input label="" placeholder="Country" />
+          <Input label="" placeholder="ZIP / Postal Code" />
         </div>
-
         {/* Continue Button */}
-        <div className="width-[358px] height-[50px] mt-6">
-          <Button text="Continue" />
-        </div>
+        <Button text="Continue" />
       </div>
-
       {/* Privacy Policy */}
-      <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed">
-        This site is protected by Google's{" "}
-        <a href="#" className="text-blue-600">
-          Privacy Policy
-        </a>{" "}
-        and{" "}
-        <a href="#" className="text-blue-600">
-          Terms of Service
-        </a>{" "}
-        apply.
+      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center md:hidden ">
+        This site is protected by Google&apos;s{" "}
+        <span className="text-blue-500">Privacy Policy</span> and{" "}
+        <span className="text-blue-500">Term of service</span> Apply
       </p>
     </div>
   );
