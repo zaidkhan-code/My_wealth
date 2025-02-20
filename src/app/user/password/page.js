@@ -57,7 +57,6 @@ const PasswordPage = () => {
             src={LoginLogo}
             height={150}
             alt=""
-            
           />
             <Image
             src={Logo}
