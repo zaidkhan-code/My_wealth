@@ -7,7 +7,7 @@ import Input from "../../../components/element/Input";
 
 const LegalAddressPage = () => {
   return (
-    <div className="bg-white md:bg-[#F6F5F7] min-h-screen flex flex-col items-center justify-center p-4">
+    <div className="bg-white md:bg-[#F6F5F7] min-h-screen gap-5 flex flex-col items-center justify-center p-4">
       <div className="md:max-w-[450px] height=[852px] w-full md:bg-white p-1 md:p-8 md:rounded-[18px] md:shadow-md md:border md:border-gray-200 text-center">
         {/* Logo */}
         <div className="flex justify-center mb-4">
