@@ -8,7 +8,7 @@ import Logo from "../../../../public/Assets/user/Logo.png";
 const OfficialPage = () => {
  
   return (
-    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
+    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
       <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
       <div className="flex  flex-row gap-5">
           <Image
@@ -27,7 +27,7 @@ const OfficialPage = () => {
             alt="MyWealth Logo"
           />
         </div>
-        <h5 className="text-[20px] sm:text-[28px] font-bold text-black leading-[30px] ">
+        <h5 className="text-[20px] md:text-[28px] font-bold text-black leading-[30px] ">
           Let&apos;s make it official.{" "}
         </h5>
         <p className="text-[13px] md:text-[15px] text-gray-500 leading-[20px] font-medium text-center ">
@@ -63,7 +63,7 @@ const OfficialPage = () => {
         </div>
     
       </div>
-      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center md:hidden ">
+      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center  ">
         This site is protected by Google&apos;s{" "}
         <span className="text-blue-500">Privacy Policy</span> and{" "}
         <span className="text-blue-500">Term of service</span> Apply

@@ -57,6 +57,7 @@ const PasswordPage = () => {
             src={LoginLogo}
             height={150}
             alt=""
+            
           />
             <Image
             src={Logo}
@@ -109,7 +110,7 @@ const PasswordPage = () => {
         
       
       </div>
-      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center md:hidden ">
+      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center ">
         This site is protected by Google&apos;s{" "}
         <span className="text-blue-500">Privacy Policy</span> and{" "}
         <span className="text-blue-500">Term of service</span> Apply
