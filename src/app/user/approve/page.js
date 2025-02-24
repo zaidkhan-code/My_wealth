@@ -20,15 +20,23 @@ const page = () => {
           {" "}
           <FaCheck />
         </div>
-        <h5 className="md:text-[28px] font-extrabold md:font-bold text-[20px]   mx-auto ">
+        <h5 className="md:text-[28px] text-black font-extrabold md:font-bold text-[20px]   mx-auto ">
           Your account is approved
         </h5>
-      </div>
-      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center ">
+
+        <p className="text-[10px] md:text-xs  text-black text-center mt-4  w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed">
         This site is protected by Google's{" "}
-        <span className="text-blue-500">Privacy Policy</span> and{" "}
-        <span className="text-blue-500">Term of service</span> Apply
+        <a href="#" className="text-blue-600">
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a href="#" className="text-blue-600">
+          Terms of Service
+        </a>{" "}
+        apply.
       </p>
+      </div>
+    
     </div>
   );
 };

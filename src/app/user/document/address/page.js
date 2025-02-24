@@ -28,42 +28,49 @@ const page = () => {
           className="object-contain md:hidden block"
           alt="Loginlogo"
         /> */}
-        <h5 className="md:text-[28px] font-extrabold md:font-bold text-[20px]   mx-auto ">
+        <h5 className="md:text-[32px] text-black font-extrabold md:font-bold text-[20px]  mx-auto ">
           Residential address confirmation Document
         </h5>
-        <p className="md:text-[15px] text-[13px] text-gray-700 leading-[20px] mx-auto font-medium max-w-[350px]">
-          Accepted document, Utility bills statements, and Government-issued ID
-          with residence address.Dont't worry, your well be safe and private
+        <p className="md:text-[13px] text-[10px] md:text-black  text-gray-700 leading-[20px] mx-auto font-medium max-w-[350px]">
+        Accepted documents, Utility bills, Bank statements, and Government-issued ID with residence address.Don’t worry, your data will be safe and private.
         </p>
         <div
-          className={`w-full border cursor-pointer rounded-lg items-center  flex ${
-            inputDocument ? "flex-row md:p-3 p-2 " : "flex-col  md:p-8 p-5 "
-          }gap-5 `}
-          onClick={() => document.getElementById("input")?.click()}
-        >
-          <CiFileOn size={35} />
+  className={`w-full border cursor-pointer rounded-lg items-center flex ${
+    inputDocument ? "flex-row md:p-3 p-2" : "flex-col md:p-8 p-5"
+  } gap-5`}
+  onClick={() => document.getElementById("input")?.click()}
+>
+  <CiFileOn size={35} color="black" />
 
-          <p className="text-[14px] text-gray-500">
-            {inputDocument
-              ? inputDocument?.name
-              : "Select the files. Supported files are PNG, JPG, PDF."}
-          </p>
-          <input
-            type="file"
-            className="hidden"
-            id="input"
-            onChange={(e) => {
-              setinputDocument(e.target.files[0]);
-            }}
-          />
-        </div>
+  <p className="md:text-[14px] text-[10px] text-black text-center">
+    {inputDocument
+      ? inputDocument?.name
+      : "Select the files. Supported files are PNG, JPG, PDF."}
+  </p>
+  <input
+    type="file"
+    className="hidden"
+    id="input"
+    onChange={(e) => {
+      setinputDocument(e.target.files[0]);
+    }}
+  />
+</div>
+
         <Button text="Submit" className={`${inputDocument && "mt-12"}`} />
       </div>
-      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center ">
-        This site is protected by Google's{" "}
-        <span className="text-blue-500">Privacy Policy</span> and{" "}
-        <span className="text-blue-500">Term of service</span> Apply
-      </p>
+      <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
+  This site is protected by Google's{" "}
+  <a href="#" className="text-blue-600">
+    Privacy Policy
+  </a>{" "}
+  and{" "}
+  <a href="#" className="text-blue-600">
+    Terms of Service
+  </a>{" "}
+  apply.
+</p>
+
     </div>
   );
 };

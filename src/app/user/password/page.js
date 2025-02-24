@@ -102,7 +102,7 @@ const PasswordPage = () => {
           </div>
         </div>
 
-        <p className="text-[13px] md:text-[15px]  mb-4 md:mb-6 text-gray-500 leading-[20px] font-medium text-center ">
+        <p className="text-[13px] md:text-[15px]  mb-4 md:mb-6 text-black leading-[20px] font-medium text-center ">
           Password should be long enough, unique to you and difficult to other
           to guess.
         </p>
@@ -110,11 +110,25 @@ const PasswordPage = () => {
         
       
       </div>
+<<<<<<< Updated upstream
       <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center ">
         This site is protected by Google&apos;s{" "}
         <span className="text-blue-500">Privacy Policy</span> and{" "}
         <span className="text-blue-500">Term of service</span> Apply
       </p>
+=======
+      <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto md:hidden ">
+  This site is protected by Google's{" "}
+  <a href="#" className="text-blue-600">
+    Privacy Policy
+  </a>{" "}
+  and{" "}
+  <a href="#" className="text-blue-600">
+    Terms of Service
+  </a>{" "}
+  apply.
+</p>
+>>>>>>> Stashed changes
     </div>
   );
 };

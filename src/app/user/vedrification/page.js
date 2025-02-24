@@ -34,11 +34,17 @@ const page = () => {
           up to 5 hour during peak traffic times.
         </p>
       </div>
-      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center ">
-        This site is protected by Google's{" "}
-        <span className="text-blue-500">Privacy Policy</span> and{" "}
-        <span className="text-blue-500">Term of service</span> Apply
-      </p>
+      <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
+  This site is protected by Google's{" "}
+  <a href="#" className="text-blue-600">
+    Privacy Policy
+  </a>{" "}
+  and{" "}
+  <a href="#" className="text-blue-600">
+    Terms of Service
+  </a>{" "}
+  apply.
+</p>
     </div>
   );
 };
