@@ -1,5 +1,4 @@
 
-<<<<<<< Updated upstream
 
 import Image from "next/image";
 import LoginLogo from "../../public/Assets/user/darklogowithtext@2x.png";
@@ -58,15 +57,5 @@ export default function Home() {
       </p>
     </div>
   );
-=======
-import React from 'react'
-import Pass from "../app/user/simplestep/page"
-const page = () => {
-  return (
-    <div>
-     <Pass/>
-    </div>
-  )
->>>>>>> Stashed changes
 }
 
