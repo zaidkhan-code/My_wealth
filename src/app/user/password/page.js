@@ -80,7 +80,7 @@ const PasswordPage = () => {
           />
           <button
             type="button"
-            className="absolute inset-y-0 right-3 flex items-center text-blue-600 hover:text-blue-800"
+            className="absolute inset-y-0 right-3 flex items-center text-black"
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? (
@@ -109,16 +109,10 @@ const PasswordPage = () => {
           <Button text="Continue" />
         </div>
       </div>
-      <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto md:hidden ">
-        This site is protected by Google's{" "}
-        <a href="#" className="text-blue-600">
-          Privacy Policy
-        </a>{" "}
-        and{" "}
-        <a href="#" className="text-blue-600">
-          Terms of Service
-        </a>{" "}
-        apply.
+      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black ">
+        This site is protected by Google&apos;s{" "}
+        <span className="text-blue-500">Privacy Policy</span> and{" "}
+        <span className="text-blue-500">Term of service</span> Apply
       </p>
     </div>
   );

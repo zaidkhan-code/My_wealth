@@ -1,5 +1,3 @@
-
-
 import Image from "next/image";
 import LoginLogo from "../../public/Assets/user/darklogowithtext@2x.png";
 import Button from "../components/element/Button";

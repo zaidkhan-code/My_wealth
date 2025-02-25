@@ -40,7 +40,7 @@ const page = () => {
         </div>
         <Input label="DOB" placeholder="1992/12/23" />
         <Input
-          label="Mubile Number"
+          label="Mobile Number"
           placeholder="+917 566 4567"
           type="number"
           className="appearance-none"
@@ -49,7 +49,7 @@ const page = () => {
         </div>
         <Button text="Continue" />
       </div>
-      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center ">
+      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black">
         This site is protected by Google&apos;s{" "}
         <span className="text-blue-500">Privacy Policy</span> and{" "}
         <span className="text-blue-500">Term of service</span> Apply

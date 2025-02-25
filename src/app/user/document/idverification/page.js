@@ -4,74 +4,70 @@ import LoginLogo from "../../../../../public/Assets/user/darklogowithtext@2x.png
 import Logo from "../../../../../public/Assets/user/Logo.png";
 import Button from "../../../../components/element/Button";
 import { CiFileOn } from "react-icons/ci";
-import Input from "../../../../components/element/Input";
 import { useState } from "react";
 
 const page = () => {
-  const [inputDocument, setinputDocument] = useState();
+  const [InputDocument, SetInputDocument] = useState();
 
   return (
 
-    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14 h-screen md:h-auto gap-5 flex-col justify-between md:justify-center flex md:items-center overflow-x-hidden">
-      <div className="md:w-[520px] w-full text-center md:h-auto px-4 py-8 md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
-        
-        {/* Responsive Image Container */}
-        <div className="w-full flex justify-center">
-          <div className="w-full max-w-[150px] md:max-w-[200px] lg:max-w-[300px]">
-            <Image
-              src={LoginLogo.src}
-              width={150}
-              height={150}
-              className="object-contain w-full h-auto"
-              alt="Loginlogo"
-            />
-          </div>
+    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
+    <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
+      <div className="flex  flex-row gap-5">
+          <Image
+            width={150}
+            className="object-cover hidden md:block"
+            src={LoginLogo}
+            height={150}
+            alt=""
+          />
+          <Image
+            src={Logo}
+            width={44}
+            height={44}
+            className="block md:hidden"
+            alt="MyWealth Logo"
+          />
         </div>
-
-        <h5 className="md:text-[28px] text-black font-extrabold md:font-bold text-[20px] mx-auto">
+        <h5 className="text-[20px] md:text-[28px] font-bold text-black leading-[30px] ">
           Upload your ID verification Document
         </h5>
-        <p className="md:text-[12px] text-[10px] text-gray-700 leading-[20px] mx-auto font-medium max-w-[350px]">
+        <p className="text-[13px] md:text-[15px] text-black leading-[20px] font-medium text-center">
           Accepted documents, passport, ID, and driving licences. Don’t worry, your data will be safe and private.
         </p>
 
         <div
-          className="flex items-center w-full border border-gray-300 rounded-lg px-3 py-2 gap-2 cursor-pointer"
+          className="flex flex-col gap-4 items-center justify-between w-full border border-gray-300 rounded-md px-4 py-6  cursor-pointer"
           onClick={() => document.getElementById("pdfInput")?.click()}
         >
           {/* File Icon in black */}
-          <CiFileOn size={20} color="black" />
+          <CiFileOn size={40} color="black" />
 
           {/* File name or default text */}
-          <p className="text-sm text-gray-700 truncate">
-            {inputDocument ? inputDocument.name : "image.pdf"}
+          <p className="text-[13px] md:text-[15px] text-gray-700 truncate">
+            {InputDocument ? InputDocument.name : "Select files, supported file are PDF, JPG,PNG"}
           </p>
 
           {/* Hidden file input restricted to PDF */}
           <input
             type="file"
-            accept=".pdf"
+            accept=".pdf, .jpg, .png"
             className="hidden"
             id="pdfInput"
             onChange={(e) => {
-              setinputDocument(e.target.files[0]);
+              SetInputDocument(e.target.files[0]);
             }}
           />
         </div>
 
-        <Button text="Submit" className={`${inputDocument && "mt-12"}`} />
+        <Button text="Submit" className={`${InputDocument}`} />
       </div>
 
-      <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
-        This site is protected by Google's{" "}
-        <a href="#" className="text-blue-600">
-          Privacy Policy
-        </a>{" "}
-        and{" "}
-        <a href="#" className="text-blue-600">
-          Terms of Service
-        </a>{" "}
-        apply.
+     
+      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black">
+        This site is protected by Google&apos;s{" "}
+        <span className="text-blue-500">Privacy Policy</span> and{" "}
+        <span className="text-blue-500">Term of service</span> Apply
       </p>
     </div>
   );

@@ -33,11 +33,11 @@ const OfficialPage = () => {
         </div>
         <h5 className="text-[20px] md:text-[28px] font-bold text-black leading-[30px] ">
           Let&apos;s make it official.{" "}
-          <p className="text-[13px] md:text-[18px] text-black leading-[20px] font-medium text-center">
-            To create your mywealth account, please agree to the Terms &amp;
-            Conditions.
-          </p>
-        </h5>
+        </h5> 
+        <p className="text-[13px] md:text-[15px] text-black leading-[20px] font-medium text-center">
+          To create your mywealth account, please agree to the Terms &amp;
+          Conditions.
+        </p>
         <div className="flex flex-col items-center justify-center p-2 md:p-6">
           <div className="w-full max-w-sm text-black">
             {policyItems.map((item) => (
@@ -59,7 +59,7 @@ const OfficialPage = () => {
           </div>
         </div>
 
-        <p className="text-[10px] md:text-[15px] font-medium mb-4 md:mb-6 text-black leading-[20px] text-center">
+        <p className="text-[13px] md:text-[15px] font-medium mb-4 md:mb-6 text-black leading-[20px] text-center">
           By tapping Create an account and using MyWealth, you agree to our
           Terms of Use and Privacy Statement.
         </p>
@@ -68,16 +68,10 @@ const OfficialPage = () => {
           <Button text="Continue" />
         </div>
       </div>
-      <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
+      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black">
         This site is protected by Google&apos;s{" "}
-        <a href="#" className="text-blue-600">
-          Privacy Policy
-        </a>{" "}
-        and{" "}
-        <a href="#" className="text-blue-600">
-          Terms of Service
-        </a>{" "}
-        apply.
+        <span className="text-blue-500">Privacy Policy</span> and{" "}
+        <span className="text-blue-500">Term of service</span> Apply
       </p>
     </div>
   );
