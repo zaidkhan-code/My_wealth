@@ -11,8 +11,8 @@ import { useState } from "react";
 const page = () => {
   const [inputDocument, setinputDocument] = useState();
   return (
-    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
-      <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
+    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-1 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
+      <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-4 md:gap-4 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
         {" "}
         <Image
           src={LoginLogo.src}
@@ -37,7 +37,7 @@ const page = () => {
         <div
   className={`w-full border cursor-pointer rounded-lg items-center flex ${
     inputDocument ? "flex-row md:p-3 p-2" : "flex-col md:p-8 p-5"
-  } gap-5`}
+  } gap-2`}
   onClick={() => document.getElementById("input")?.click()}
 >
   <CiFileOn size={35} color="black" />
@@ -57,9 +57,9 @@ const page = () => {
   />
 </div>
 
-        <Button text="Submit" className={`${inputDocument && "mt-12"}`} />
+        <Button text="Submit" className={`${inputDocument && "md:mt-12 mt-6"}`} />
       </div>
-      <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
+      <p className="text-[10px] md:text-xs text-black text-center md:mt-4 mt-1 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
   This site is protected by Google's{" "}
   <a href="#" className="text-blue-600">
     Privacy Policy
