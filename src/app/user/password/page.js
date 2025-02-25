@@ -49,7 +49,7 @@ const PasswordPage = () => {
   };
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
-    <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
+      <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
         <div className="flex  flex-row gap-5">
           <Image
             width={150}
@@ -57,9 +57,8 @@ const PasswordPage = () => {
             src={LoginLogo}
             height={150}
             alt=""
-            
           />
-            <Image
+          <Image
             src={Logo}
             width={44}
             height={44}
@@ -106,32 +105,23 @@ const PasswordPage = () => {
           Password should be long enough, unique to you and difficult to other
           to guess.
         </p>
-        <div className="w-full"><Button text="Continue" /></div>
-        
-      
+        <div className="w-full">
+          <Button text="Continue" />
+        </div>
       </div>
-<<<<<<< Updated upstream
-      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center ">
-        This site is protected by Google&apos;s{" "}
-        <span className="text-blue-500">Privacy Policy</span> and{" "}
-        <span className="text-blue-500">Term of service</span> Apply
-      </p>
-=======
       <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto md:hidden ">
-  This site is protected by Google's{" "}
-  <a href="#" className="text-blue-600">
-    Privacy Policy
-  </a>{" "}
-  and{" "}
-  <a href="#" className="text-blue-600">
-    Terms of Service
-  </a>{" "}
-  apply.
-</p>
->>>>>>> Stashed changes
+        This site is protected by Google's{" "}
+        <a href="#" className="text-blue-600">
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a href="#" className="text-blue-600">
+          Terms of Service
+        </a>{" "}
+        apply.
+      </p>
     </div>
   );
 };
 
 export default PasswordPage;
-

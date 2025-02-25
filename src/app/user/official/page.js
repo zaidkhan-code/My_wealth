@@ -13,15 +13,9 @@ const OfficialPage = () => {
   ];
 
   return (
-<<<<<<< Updated upstream
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
       <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
-      <div className="flex  flex-row gap-5">
-=======
-    <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14 h-screen md:h-auto gap-5 flex-col justify-between md:justify-center flex md:items-center overflow-x-hidden">
-      <div className="md:w-[520px] w-full text-center md:h-auto px-4 py-8 md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
-        <div className="flex flex-row gap-5">
->>>>>>> Stashed changes
+        <div className="flex  flex-row gap-5">
           <Image
             width={150}
             className="object-cover hidden md:block"
@@ -37,19 +31,13 @@ const OfficialPage = () => {
             alt="MyWealth Logo"
           />
         </div>
-<<<<<<< Updated upstream
         <h5 className="text-[20px] md:text-[28px] font-bold text-black leading-[30px] ">
           Let&apos;s make it official.{" "}
-=======
-
-        <h5 className="text-[20px] sm:text-[28px] font-bold text-black leading-[30px]">
-          Let&apos;s make it official.
->>>>>>> Stashed changes
+          <p className="text-[13px] md:text-[18px] text-black leading-[20px] font-medium text-center">
+            To create your mywealth account, please agree to the Terms &amp;
+            Conditions.
+          </p>
         </h5>
-        <p className="text-[13px] md:text-[18px] text-black leading-[20px] font-medium text-center">
-          To create your mywealth account, please agree to the Terms &amp; Conditions.
-        </p>
-
         <div className="flex flex-col items-center justify-center p-2 md:p-6">
           <div className="w-full max-w-sm text-black">
             {policyItems.map((item) => (
@@ -57,7 +45,6 @@ const OfficialPage = () => {
                 <input
                   type="checkbox"
                   name={item.name}
-                  
                   defaultChecked={item.name === "terms"}
                   className="w-4 h-4 accent-blue-800 cursor-pointer"
                 />
@@ -81,12 +68,7 @@ const OfficialPage = () => {
           <Button text="Continue" />
         </div>
       </div>
-<<<<<<< Updated upstream
-      <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center  ">
-=======
-
       <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
->>>>>>> Stashed changes
         This site is protected by Google&apos;s{" "}
         <a href="#" className="text-blue-600">
           Privacy Policy

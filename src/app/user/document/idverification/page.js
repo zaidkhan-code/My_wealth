@@ -11,6 +11,7 @@ const page = () => {
   const [inputDocument, setinputDocument] = useState();
 
   return (
+
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14 h-screen md:h-auto gap-5 flex-col justify-between md:justify-center flex md:items-center overflow-x-hidden">
       <div className="md:w-[520px] w-full text-center md:h-auto px-4 py-8 md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
         
