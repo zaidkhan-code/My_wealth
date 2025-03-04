@@ -7,7 +7,11 @@ import LoginLogo from "../../../../public/Assets/user/darklogowithtext@2x.png";
 import Button from "../../../components/element/Button";
 import Input from "../../../components/element/Input";
 import Logo from "../../../../public/Assets/user/Logo.png";
-
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useRouter } from "next/navigation";
+import { useMainContext } from "@/components/Context_Api/MainContext";
+const validationSchema = Yup.object({});
 const PasswordPage = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +22,24 @@ const PasswordPage = () => {
     digit: false,
     specialChar: false,
   });
+  const { userDetail, setUserDetail } = useMainContext();
+  const router = useRouter();
+  const { values, errors, touched, handleBlur, handleSubmit, setErrors } =
+    useFormik({
+      initialValues: {},
+      validationSchema,
+      onSubmit: (values) => {
+        console.log("Form submitted with values:", values);
+        setUserDetail((prev) => {
+          return {
+            ...prev,
+            password: password,
+          };
+        });
+        router.push("/user/official");
+      },
+    });
+
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
@@ -74,6 +96,7 @@ const PasswordPage = () => {
           <Input
             label=""
             placeholder="Password"
+            error={errors?.password}
             value={password}
             onChange={handlePasswordChange}
             type={showPassword ? "text" : "password"}
@@ -106,7 +129,19 @@ const PasswordPage = () => {
           to guess.
         </p>
         <div className="w-full">
-          <Button text="Continue" />
+          <Button
+            text="Continue"
+            onClick={() => {
+              if (Object.values(validation).filter(Boolean).length == 5) {
+                handleSubmit();
+                console.log("onclick function is call");
+              } else {
+                setErrors({
+                  password: "Choose a strong password like this: P@ssw0rd123",
+                });
+              }
+            }}
+          />
         </div>
       </div>
       <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black ">

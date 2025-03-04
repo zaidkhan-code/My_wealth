@@ -16,18 +16,17 @@ const useApi = () => {
     async (url, options = {}, callBack) => {
       let response = null;
       let error = null;
-      console.log(options);
       try {
         const res = await fetch(baseUrl + url, options);
 
         const data = await res.json();
         response = data;
 
-        if (data?.message === "logouted") {
-          router.push("/login");
-        }
+        // if (data?.message === "logouted") {
+        //   router.push("/login");
+        // }
 
-        callBack(data, res.ok);
+        callBack(data, true);
 
         if (!res.ok) {
           throw new Error(data.message || "Something went wrong");

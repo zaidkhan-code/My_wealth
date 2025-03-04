@@ -4,12 +4,35 @@ import Image from "next/image";
 import LoginLogo from "../../../../public/Assets/user/darklogowithtext@2x.png";
 import React from "react";
 import Logo from "../../../../public/Assets/user/Logo.png";
-
+import { useFormik } from "formik";
+import { useMainContext } from "@/components/Context_Api/MainContext";
+import * as Yup from "yup";
+import { useRouter } from "next/navigation";
+const validationSchema = Yup.object({});
 const OfficialPage = () => {
+  const router = useRouter();
+  const { setUserDetail, CreateUser } = useMainContext();
+  const { values, handleSubmit, setFieldValue } = useFormik({
+    initialValues: {
+      terms: false,
+      privacy: false,
+      refund: false,
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      setUserDetail((prev) => {
+        return {
+          ...prev,
+          ...values,
+        };
+      });
+      CreateUser();
+    },
+  });
   const policyItems = [
-    { label: "Terms and Conditions", name: "terms", link: "#" },
-    { label: "Privacy Policy", name: "privacy", link: "#" },
-    { label: "Refund Policy", name: "refund", link: "#" },
+    { label: "Terms and Conditions", name: "terms_and_condition", link: "#" },
+    { label: "Privacy Policy", name: "privacy_policy", link: "#" },
+    { label: "Refund Policy", name: "refund_policy", link: "#" },
   ];
 
   return (
@@ -33,7 +56,7 @@ const OfficialPage = () => {
         </div>
         <h5 className="text-[20px] md:text-[28px] font-bold text-black leading-[30px] ">
           Let&apos;s make it official.{" "}
-        </h5> 
+        </h5>
         <p className="text-[13px] md:text-[15px] text-black leading-[20px] font-medium text-center">
           To create your mywealth account, please agree to the Terms &amp;
           Conditions.
@@ -42,18 +65,24 @@ const OfficialPage = () => {
           <div className="w-full max-w-sm text-black">
             {policyItems.map((item) => (
               <div key={item.name} className="flex items-center gap-2 mb-4">
-                <input
-                  type="checkbox"
-                  name={item.name}
-                  defaultChecked={item.name === "terms"}
-                  className="w-4 h-4 accent-blue-800 cursor-pointer"
-                />
-                <a
-                  href={item.link}
-                  className="underline text-[13px] md:text-[15px] text-black leading-[20px] font-semibold"
+                <label
+                  htmlFor={item.name}
+                  className="flex items-center gap-2 cursor-pointer"
                 >
-                  {item.label}
-                </a>
+                  <input
+                    type="checkbox"
+                    id={item.name}
+                    name={item.name}
+                    checked={values[item.name] || false}
+                    onChange={(e) => {
+                      setFieldValue(item?.name, e.target.checked);
+                    }}
+                    className="w-4 h-4 accent-blue-800"
+                  />
+                  <p className="underline text-[13px] md:text-[15px] text-gray-800 leading-[20px] font-semibold">
+                    {item.label}
+                  </p>
+                </label>
               </div>
             ))}
           </div>
@@ -65,7 +94,7 @@ const OfficialPage = () => {
         </p>
 
         <div className="w-full">
-          <Button text="Continue" />
+          <Button text="Continue" onClick={handleSubmit} />
         </div>
       </div>
       <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black">

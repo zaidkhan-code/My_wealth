@@ -1,11 +1,35 @@
+"use client";
 import Image from "next/image";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import LoginLogo from "../../public/Assets/user/darklogowithtext@2x.png";
 import Button from "../components/element/Button";
 import Input from "../components/element/Input";
 import LikeImg from "../../public/Assets/user/thumb-up-icn(1).svg";
 import Logo from "../../public/Assets/user/Logo.png";
-
+import { useRouter } from "next/navigation";
+import { useMainContext } from "@/components/Context_Api/MainContext";
+const validationSchema = Yup.object({
+  Referral_Code: Yup.string().required(" Referral Code is required"),
+});
 export default function Home() {
+  const { setUserDetail } = useMainContext();
+  const router = useRouter();
+  const { errors, handleSubmit, setFieldValue } = useFormik({
+    initialValues: {
+      Referral_Code: "",
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      setUserDetail((prev) => {
+        return {
+          ...prev,
+          ...values,
+        };
+      });
+      router.push("/user/personalinformation");
+    },
+  });
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
       <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
@@ -34,19 +58,37 @@ export default function Home() {
           </h5>
         </div>
         <div className="flex flex-col justify-center items-center gap-4">
-        <p className="text-[13px] md:text-[15px]  text-gray-700 leading-[20px] font-medium ">
-          The fastest-growing Investment and wealth managment company
-        </p>
-        <div className="flex gap-2">
-          <Image width={25} height={25} alt="likeimg" src={LikeImg} />
-          <p className="text-[12px] md:text-[14px] font-medium text-gray-500">
-            +10,000 user trust us
+          <p className="text-[13px] md:text-[15px]  text-gray-700 leading-[20px] font-medium ">
+            The fastest-growing Investment and wealth managment company
           </p>
+          <div className="flex gap-2">
+            <Image width={25} height={25} alt="likeimg" src={LikeImg} />
+            <p className="text-[12px] md:text-[14px] font-medium text-gray-500">
+              +10,000 user trust us
+            </p>
+          </div>
         </div>
-        </div>
-        <Input label="Referral Code*" placeholder="REFFERAL01MCO" />
-        <Button text="Skip" Theme="light" />
-        <Button text="Next" />
+        <Input
+          label="Referral Code*"
+          placeholder="REFFERAL01MCO"
+          error={errors?.Referral_Code}
+          onChange={(e) => {
+            setFieldValue("Referral_Code", e.target.value);
+          }}
+        />
+        <Button
+          text="Skip"
+          Theme="light"
+          onClick={() => {
+            router.push("/user/personalinformation");
+          }}
+        />
+        <Button
+          text="Next"
+          onClick={() => {
+            handleSubmit();
+          }}
+        />
       </div>
       <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center  ">
         This site is protected by Google&apos;s{" "}
@@ -56,4 +98,3 @@ export default function Home() {
     </div>
   );
 }
-
