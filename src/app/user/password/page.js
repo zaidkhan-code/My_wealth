@@ -24,21 +24,20 @@ const PasswordPage = () => {
   });
   const { userDetail, setUserDetail } = useMainContext();
   const router = useRouter();
-  const { values, errors, touched, handleBlur, handleSubmit, setErrors } =
-    useFormik({
-      initialValues: {},
-      validationSchema,
-      onSubmit: (values) => {
-        console.log("Form submitted with values:", values);
-        setUserDetail((prev) => {
-          return {
-            ...prev,
-            password: password,
-          };
-        });
-        router.push("/user/official");
-      },
-    });
+  const { values, errors, isSubmitting, handleSubmit, setErrors } = useFormik({
+    initialValues: {},
+    validationSchema,
+    onSubmit: (values) => {
+      console.log("Form submitted with values:", values);
+      setUserDetail((prev) => {
+        return {
+          ...prev,
+          password: password,
+        };
+      });
+      router.push("/user/official");
+    },
+  });
 
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
@@ -131,6 +130,7 @@ const PasswordPage = () => {
         <div className="w-full">
           <Button
             text="Continue"
+            loading={isSubmitting}
             onClick={() => {
               if (Object.values(validation).filter(Boolean).length == 5) {
                 handleSubmit();

@@ -10,6 +10,7 @@ export const AppProvider = ({ children }) => {
   const [testingdetails, setTestingdetails] = useState();
   const [userDetail, setUserDetail] = useState();
   const [timeLeft, setTimeLeft] = useState(10 * 60);
+  const [userFileDocument, setUserFileDocument] = useState({});
   function CreateUser() {
     let payload = {
       firstName: userDetail?.firstName || "",
@@ -41,13 +42,24 @@ export const AppProvider = ({ children }) => {
       },
       (res, status) => {
         if (status) {
-          router.push("/user/verification");
-          startCountdown();
-        } else {
           startCountdown();
           router.push("/user/otp");
+        } else {
+          alert("some thing went wrong please form again");
+          router.push("/");
         }
       }
+    );
+  }
+  function UploadFileForUser() {
+    fetchData(
+      "files/upload",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      },
+      (res, status) => {}
     );
   }
   const startCountdown = () => {
@@ -64,39 +76,18 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     return () => clearInterval();
   }, []);
-  function Verifyotp(otpcode) {
-    let payload = {
-      email: userDetail?.email || "",
-      otp: otpcode || "",
-    };
-    fetchData(
-      "users/verify-otp",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      },
-      (res, status) => {
-        if (status) {
-          router.push("/user/verification");
-          startCountdown();
-        } else {
-          startCountdown();
-          router.push("/user/otp");
-        }
-      }
-    );
-  }
   return (
     <MainContext.Provider
       value={{
         testingdetails,
         setTestingdetails,
+        userFileDocument,
+        setUserFileDocument,
         timeLeft,
         userDetail,
-        Verifyotp,
         setUserDetail,
         CreateUser,
+        UploadFileForUser,
       }}
     >
       {children}

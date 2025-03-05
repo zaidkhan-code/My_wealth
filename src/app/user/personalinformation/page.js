@@ -9,42 +9,68 @@ import Button from "../../../components/element/Button";
 import Input from "../../../components/element/Input";
 import { useMainContext } from "@/components/Context_Api/MainContext";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import useApi from "@/util/useApi";
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
   dob: Yup.string().required("Date of birth is required"),
-  mobileNumber: Yup.string()
-    .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits long") // Matches 10-digit number
-    .required("Mobile number is required"),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
 });
 const Page = () => {
-  const { userDetail, setUserDetail } = useMainContext();
+  const { fetchData } = useApi();
   const router = useRouter();
-  const { values, errors, touched, handleBlur, handleSubmit, setFieldValue } =
-    useFormik({
-      initialValues: {
-        firstName: "",
-        lastName: "",
-        dob: "",
-        mobileNumber: "",
-        email: "",
+  const { userDetail, setUserDetail } = useMainContext();
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    setErrors,
+    handleSubmit,
+    isSubmitting,
+    setFieldError,
+    setFieldValue,
+  } = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      dob: "",
+      mobileNumber: "",
+      email: "",
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      setUserDetail((prev) => {
+        return {
+          ...prev,
+          ...values,
+        };
+      });
+      router.push("/user/legaladdress");
+    },
+  });
+  function checkemailvaidation(email) {
+    let data = {
+      email: email,
+    };
+    fetchData(
+      "users/checkUserAlreadyExist",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       },
-      validationSchema,
-      onSubmit: (values) => {
-        console.log("Form submitted with values:", values);
-        setUserDetail((prev) => {
-          return {
-            ...prev,
-            ...values,
-          };
-        });
-        router.push("/user/legaladdress");
-      },
-    });
+      (res, status) => {
+        if (!status) {
+          setFieldError("email", "Email already exists. Enter a unique email.");
+        }
+      }
+    );
+  }
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14 h-screen md:h-auto flex flex-col items-center justify-center">
       <div className="md:w-[520px] w-full text-center px-4 py-8 md:px-10 md:py-10 gap-8 flex flex-col items-center md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
@@ -121,11 +147,13 @@ const Page = () => {
             placeholder="john@gmail.com"
             type="email"
             value={values.email}
-            onChange={(e) => setFieldValue("email", e.target.value)}
-            onBlur={handleBlur}
-            error={touched.email ? errors.email : ""}
+            onChange={(e) => {
+              setFieldValue("email", e.target.value);
+              checkemailvaidation(e.target.value);
+            }}
+            error={errors.email}
           />
-          <Button text="Continue" type="submit" />
+          <Button text="Continue" type="submit" loading={isSubmitting} />
         </form>
       </div>
 

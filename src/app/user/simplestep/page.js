@@ -7,20 +7,10 @@ import { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { Bs1CircleFill, Bs2CircleFill } from "react-icons/bs";
 import { useRouter } from "next/navigation";
-
+import { useMainContext } from "../../../components/Context_Api/MainContext";
 const Page = () => {
+  const { userFileDocument } = useMainContext();
   const router = useRouter();
-  const [stepCompleted, setStepCompleted] = useState({
-    idScan: false,
-    addressConfirmation: false,
-  });
-
-  const toggleStep = (step) => {
-    setStepCompleted((prev) => ({
-      ...prev,
-      [step]: !prev[step],
-    }));
-  };
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
       <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
@@ -54,24 +44,38 @@ const Page = () => {
             onClick={() => {
               router.push("/user/document/idverification");
             }}
-            className="flex items-center gap-4 w-full px-4 py-3 border rounded-md text-gray-950  border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="flex items-center gap-4 w-full px-4 py-3 border rounded-md text-gray-950  border-gray-300 focus:outline-none  focus:ring-gray-400"
           >
             {" "}
-            <FaCheckCircle className="text-green-500 text-xl" fill="black" />
-            {/* <Bs1CircleFill className="text-blue-700 text-xl" /> */}
-            <span>Scan your ID or Passport</span>
+            {userFileDocument?.idverification ? (
+              <FaCheckCircle className="text-green-500 text-xl" />
+            ) : (
+              <Bs1CircleFill className="text-blue-700 text-xl" />
+            )}
+            <span>
+              {" "}
+              {userFileDocument?.idverification
+                ? userFileDocument?.idverification
+                : "Scan your ID or Passport"}
+            </span>
           </button>
-
           <button
-            onClick={() => toggleStep("addressConfirmation")}
-            className="flex items-center gap-4 w-full px-4 py-3 border rounded-md text-gray-950 border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            onClick={() => {
+              router.push("/user/document/address");
+            }}
+            className="flex items-center gap-4 w-full px-4 py-3 border rounded-md text-gray-950 border-gray-300 "
           >
-            {stepCompleted.addressConfirmation ? (
+            {userFileDocument?.addressfile ? (
               <FaCheckCircle className="text-green-500 text-xl" />
             ) : (
               <Bs2CircleFill className="text-blue-700 text-xl" />
             )}
-            <span>Residential address confirmation</span>
+
+            <span>
+              {userFileDocument?.addressfile
+                ? userFileDocument?.addressfile
+                : "Residential address confirmation"}
+            </span>
           </button>
         </div>
         <div className="mt-6 w-full">

@@ -6,18 +6,38 @@ import { useMainContext } from "@/components/Context_Api/MainContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
+import useApi from "@/util/useApi";
 const validationSchema = Yup.object({
   otp: Yup.string().required("please enter otp code"),
 });
 const Page = () => {
-  const { timeLeft, Verifyotp } = useMainContext();
-  const { values, handleSubmit, setFieldValue, errors } = useFormik({
+  const { timeLeft, userDetail } = useMainContext();
+  const { fetchData } = useApi();
+  const { values, handleSubmit, setErrors, setFieldValue, errors } = useFormik({
     initialValues: {
       otp: "",
     },
     validationSchema,
     onSubmit: (values) => {
-      Verifyotp(values?.otp);
+      let payload = {
+        email: userDetail?.email || "",
+        otp: otpcode || "",
+      };
+      fetchData(
+        "users/verify-otp",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        },
+        (res, status) => {
+          if (status) {
+            router.push("/user/simplestep");
+          } else {
+            setErrors("otp", "Otp is expired or invalid");
+          }
+        }
+      );
     },
   });
   return (
@@ -62,9 +82,9 @@ const Page = () => {
         <div className="ml-1  flex justify-between text-[15px] w-full  mx-auto mt-0 text-xs sm:text-xs md:text-sm lg:text-base text-black">
           <p>
             Remaining time : {Math.floor(timeLeft / 60)}:
-            {String(timeLeft % 60).padStart(2, "0")}
+            {String(timeLeft % 60).padStart(2, "0")}s
           </p>
-          <a className="text-blue-600 cursor-pointer ">Resend</a>
+          {/* <a className="text-blue-600 cursor-pointer ">Resend</a> */}
         </div>
 
         <div className="mt-10 md:mt-6">

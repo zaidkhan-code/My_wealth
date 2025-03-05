@@ -12,31 +12,37 @@ import { useRouter } from "next/navigation";
 const validationSchema = Yup.object({
   address: Yup.string().required("address name is required"),
   city: Yup.string().required("city name is required"),
-  zip_postal_code: Yup.string().required("ZIP / Postal Code is required"),
   country: Yup.string().required("country is required"),
 });
 const LegalAddressPage = () => {
   const { setUserDetail } = useMainContext();
   const router = useRouter();
-  const { values, errors, touched, handleBlur, handleSubmit, setFieldValue } =
-    useFormik({
-      initialValues: {
-        address: "",
-        city: "",
-        zip_postal_code: "",
-        country: "",
-      },
-      validationSchema,
-      onSubmit: (values) => {
-        setUserDetail((prev) => {
-          return {
-            ...prev,
-            ...values,
-          };
-        });
-        router.push("/user/password");
-      },
-    });
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleSubmit,
+    setFieldValue,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      address: "",
+      city: "",
+      zip_postal_code: "",
+      country: "",
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      setUserDetail((prev) => {
+        return {
+          ...prev,
+          ...values,
+        };
+      });
+      router.push("/user/password");
+    },
+  });
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-140 h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden">
       <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
@@ -98,7 +104,7 @@ const LegalAddressPage = () => {
             placeholder="ZIP / Postal Code"
           />
         </div>
-        <Button text="Continue" onClick={handleSubmit} />
+        <Button text="Continue" onClick={handleSubmit} loading={isSubmitting} />
       </div>
       <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black">
         This site is protected by Google&apos;s{" "}

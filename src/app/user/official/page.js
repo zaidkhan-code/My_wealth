@@ -12,7 +12,7 @@ const validationSchema = Yup.object({});
 const OfficialPage = () => {
   const router = useRouter();
   const { setUserDetail, CreateUser } = useMainContext();
-  const { values, handleSubmit, setFieldValue } = useFormik({
+  const { values, handleSubmit, setFieldValue, isSubmitting } = useFormik({
     initialValues: {
       terms: false,
       privacy: false,
@@ -94,7 +94,11 @@ const OfficialPage = () => {
         </p>
 
         <div className="w-full">
-          <Button text="Continue" onClick={handleSubmit} />
+          <Button
+            text="Continue"
+            onClick={handleSubmit}
+            loading={isSubmitting}
+          />
         </div>
       </div>
       <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black">

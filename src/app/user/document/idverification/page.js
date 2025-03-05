@@ -4,10 +4,12 @@ import LoginLogo from "../../../../../public/Assets/user/darklogowithtext@2x.png
 import Logo from "../../../../../public/Assets/user/Logo.png";
 import Button from "../../../../components/element/Button";
 import { CiFileOn } from "react-icons/ci";
-import { useState } from "react";
+import { useMainContext } from "@/components/Context_Api/MainContext";
+import { useRouter } from "next/navigation";
 
 const page = () => {
-  const [InputDocument, SetInputDocument] = useState();
+  const router = useRouter();
+  const { userFileDocument, setUserFileDocument } = useMainContext();
 
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
@@ -38,14 +40,16 @@ const page = () => {
 
         <div
           className={`flex ${
-            InputDocument?.name ? "flex-row p-2 " : "flex-col px-4 py-6  "
+            userFileDocument?.idverification
+              ? "flex-row p-2 "
+              : "flex-col px-4 py-6  "
           } gap-4 items-center  w-full border border-gray-300 rounded-md  cursor-pointer`}
           onClick={() => document.getElementById("pdfInput")?.click()}
         >
           <CiFileOn size={40} color="black" />
           <p className={` text-[13px] md:text-[15px] text-gray-700 truncate`}>
-            {InputDocument
-              ? InputDocument?.name
+            {userFileDocument?.idverification
+              ? userFileDocument?.idverification
               : "Select files, supported file are PDF, JPG,PNG"}
           </p>
           <input
@@ -54,12 +58,19 @@ const page = () => {
             className="hidden"
             id="pdfInput"
             onChange={(e) => {
-              SetInputDocument(e.target.files[0]);
+              setUserFileDocument((prev) => ({
+                ...prev,
+                idverification: e.target.files[0].name,
+              }));
             }}
           />
         </div>
 
-        <Button text="Submit" className={`${InputDocument}`} />
+        <Button
+          text="Submit"
+          onClick={() => router.push("/user/simplestep")}
+          className={`${userFileDocument?.idverification && "md:mt-12 mt-6"}`}
+        />
       </div>
 
       <p className=" text-[11px] md:text-[15px] font-medium max-w-[350px] mx-auto md:max-w-[380px] text-center text-black">
