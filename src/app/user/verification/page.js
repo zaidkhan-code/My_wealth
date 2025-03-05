@@ -29,21 +29,22 @@ const page = () => {
         <h5 className="md:text-[28px] text-black font-extrabold md:font-bold text-[20px]   mx-auto ">
           Verification Pending
         </h5>
-        <p className="md:text-[16px] text-[13px] text-gray-700 md:text-black leading-[20px] mx-auto font-medium max-w-[350px]">
-        We will notify you when your account is verified, which can take up to 5 hours during peak traffic times.
+        <p className="md:text-[15px] text-[13px] text-gray-600 md:text-black leading-[20px] mx-auto font-medium max-w-[350px]">
+          We will notify you when your account is verified, which can take up to
+          5 hours during peak traffic times.
         </p>
       </div>
       <p className="text-[10px] md:text-xs text-black text-center md:mt-4 mt-2 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
-  This site is protected by Google's{" "}
-  <a href="#" className="text-blue-600">
-    Privacy Policy
-  </a>{" "}
-  and{" "}
-  <a href="#" className="text-blue-600">
-    Terms of Service
-  </a>{" "}
-  apply.
-</p>
+        This site is protected by Google's{" "}
+        <a href="#" className="text-blue-600">
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a href="#" className="text-blue-600">
+          Terms of Service
+        </a>{" "}
+        apply.
+      </p>
     </div>
   );
 };

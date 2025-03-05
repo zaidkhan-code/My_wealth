@@ -9,7 +9,7 @@ import { Bs1CircleFill, Bs2CircleFill } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 import { useMainContext } from "../../../components/Context_Api/MainContext";
 const Page = () => {
-  const { userFileDocument } = useMainContext();
+  const { userFileDocument, VerifyUser } = useMainContext();
   const router = useRouter();
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
@@ -79,7 +79,11 @@ const Page = () => {
           </button>
         </div>
         <div className="mt-6 w-full">
-          <Button text="Submit" className="w-full" />
+          <Button
+            text="Submit"
+            className="w-full"
+            onClick={() => VerifyUser()}
+          />
         </div>
       </div>
 

@@ -73,12 +73,31 @@ export const AppProvider = ({ children }) => {
       }
     }, 1000);
   };
+  const VerifyUser = () => {
+    let payload = {
+      email: userDetail?.email,
+    };
+    fetchData(
+      "users/verification",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      },
+      (res, status) => {
+        if (status) {
+          router.push("/user/verification");
+        }
+      }
+    );
+  };
   useEffect(() => {
     return () => clearInterval();
   }, []);
   return (
     <MainContext.Provider
       value={{
+        VerifyUser,
         testingdetails,
         setTestingdetails,
         userFileDocument,
