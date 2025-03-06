@@ -19,23 +19,29 @@ function Sidebar() {
   ];
 
   return (
-    <div className="hidden md:block"> 
+    <div className="hidden md:block">
       <aside className="bg-white w-64 h-screen border-r shadow-sm flex flex-col pt-[73px]">
         <nav className="flex-1 px-4">
           <ul>
             {navItems.map((item) => (
-              <li key={item.path} className="flex items-center py-1 pl-2">
-                <Image
-                  src={item.icon}
-                  alt={`${item.label} icon`}
-                  width={20}
-                  height={20}
-                />
-                <Link
-                  href={item.path}
-                  className="block font-bold text-gray-600 px-3 py-1 rounded hover:bg-gray-100 transition-colors"
-                >
-                  {item.label}
+              <li key={item.path}>
+                <Link href={item.path}>
+                  <div className="flex items-center gap-3 p-2 rounded-lg cursor-pointer group transition-all duration-200 hover:bg-gray-200">
+                    <Image
+                      src={item.icon}
+                      alt={`${item.label} icon`}
+                      width={20}
+                      height={20}
+                      className="group-hover:brightness-50 transition-all duration-200"
+                    />
+                   <span
+  className="block font-bold group-hover:text-gray-600 transition-all duration-200"
+  style={{ color: "#5F6471" }} // Apply custom color
+>
+  {item.label}
+</span>
+
+                  </div>
                 </Link>
               </li>
             ))}

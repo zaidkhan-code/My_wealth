@@ -25,7 +25,7 @@ export default function Page() {
           <div className="flex justify-center items-center mt-4">
             <div className="bg-white w-full h-[380px] max-w-[600px] sm:h-[350px] p-4 rounded-lg shadow-md">
               <div className="flex flex-col items-start sm:items-start">
-                <p className="text-3xl font-bold text-[#5F6471]">$0.00</p>
+                <p className="text-3xl font-bold text-black">$0.00</p>
 
                 <div className="flex items-center mt-2">
                   <Image
