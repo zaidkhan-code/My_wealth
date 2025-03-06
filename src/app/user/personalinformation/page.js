@@ -29,8 +29,9 @@ const Page = () => {
     errors,
     touched,
     handleBlur,
-    setErrors,
+    setTouched,
     handleSubmit,
+    setFieldTouched,
     isSubmitting,
     setFieldError,
     setFieldValue,
@@ -150,8 +151,11 @@ const Page = () => {
             onChange={(e) => {
               setFieldValue("email", e.target.value);
               checkemailvaidation(e.target.value);
+              if (!touched.email) {
+                setTouched({ ...touched, email: true });
+              }
             }}
-            error={errors.email}
+            error={errors.email && touched.email ? errors.email : ""}
           />
           <Button text="Continue" type="submit" loading={isSubmitting} />
         </form>

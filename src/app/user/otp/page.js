@@ -13,15 +13,22 @@ const validationSchema = Yup.object({
 const Page = () => {
   const { timeLeft, userDetail } = useMainContext();
   const { fetchData } = useApi();
-  const { values, handleSubmit, setErrors, setFieldValue, errors } = useFormik({
+  const {
+    values,
+    handleSubmit,
+    setFieldError,
+    setFieldValue,
+    isSubmitting,
+    errors,
+  } = useFormik({
     initialValues: {
       otp: "",
     },
     validationSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { setSubmitting }) => {
       let payload = {
         email: userDetail?.email || "",
-        otp: otpcode || "",
+        otp: values?.otp || "",
       };
       fetchData(
         "users/verify-otp",
@@ -33,8 +40,10 @@ const Page = () => {
         (res, status) => {
           if (status) {
             router.push("/user/simplestep");
+            setSubmitting(false);
           } else {
-            setErrors("otp", "Otp is expired or invalid");
+            setFieldError("otp", "Otp is expired or invalid");
+            setSubmitting(false);
           }
         }
       );
@@ -88,7 +97,7 @@ const Page = () => {
         </div>
 
         <div className="mt-10 md:mt-6">
-          <Button text="Next" onClick={handleSubmit} />
+          <Button text="Next" onClick={handleSubmit} loading={isSubmitting} />
         </div>
         <p className="text-[10px] md:text-xs text-black text-center mt-4 w-full max-w-[270px] md:max-w-[368px] min-h-[26px] md:min-h-[38px] leading-relaxed mx-auto">
           This site is protected by Google's{" "}
