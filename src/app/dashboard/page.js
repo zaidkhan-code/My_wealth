@@ -19,7 +19,9 @@ export default function Page() {
 
       
         <div className="p-10">
-          <h2 className="text-lg font-semibold mt-8 sm:mt-14 ml-4 sm:ml-10 text-blue-700">
+         <div className="p-10">
+          <h2 className="text-lg font-semibold mt-8 sm:mt-14 ml-2 sm:ml-2
+          md:ml-60 text-blue-700">
             Wallet
           </h2>
 
