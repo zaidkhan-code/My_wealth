@@ -44,14 +44,16 @@ export const AppProvider = ({ children }) => {
         if (status) {
           startCountdown();
           router.push("/user/otp");
+          localStorage.setItem("token", res?.token);
         } else {
-          alert("some thing went wrong please form again");
+          alert("some thing went wrong please fill form again");
           router.push("/");
         }
       }
     );
   }
-  function UploadFileForUser() {
+  function UploadFileForUser(file, type) {
+    
     fetchData(
       "files/upload",
       {

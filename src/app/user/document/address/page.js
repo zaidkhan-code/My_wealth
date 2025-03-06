@@ -78,7 +78,7 @@ const page = () => {
           Terms of Service
         </a>{" "}
         apply.
-      </p>
+      </p>                                                                                                                                                                     
     </div>
   );
 };
