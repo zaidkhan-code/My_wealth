@@ -8,8 +8,32 @@ import { FaCheckCircle } from "react-icons/fa";
 import { Bs1CircleFill, Bs2CircleFill } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 import { useMainContext } from "../../../components/Context_Api/MainContext";
+import useApi from "@/util/useApi";
 const Page = () => {
-  const { userFileDocument, VerifyUser } = useMainContext();
+  const { fetchData } = useApi();
+  const { userFileDocument, userDetail } = useMainContext();
+  const [loading, setLoading] = useState(false);
+
+  const VerifyUser = () => {
+    setLoading(true);
+    let payload = {
+      email: userDetail?.email,
+    };
+    fetchData(
+      "users/verification",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      },
+      (res, status) => {
+        if (status) {
+          setLoading(false);
+          router.push("/user/verification");
+        }
+      }
+    );
+  };
   const router = useRouter();
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
@@ -52,7 +76,7 @@ const Page = () => {
             ) : (
               <Bs1CircleFill className="text-blue-700 text-xl" />
             )}
-            <span>
+            <span className=" truncate overflow-hidden whitespace-nowrap ">
               {" "}
               {userFileDocument?.idverification
                 ? userFileDocument?.idverification
@@ -63,7 +87,7 @@ const Page = () => {
             onClick={() => {
               router.push("/user/document/address");
             }}
-            className="flex items-center gap-4 w-full px-4 py-3 border rounded-md text-gray-950 border-gray-300 "
+            className="flex items-center gap-4 w-full px-4 py-3    border rounded-md text-gray-950 border-gray-300 "
           >
             {userFileDocument?.addressfile ? (
               <FaCheckCircle className="text-green-500 text-xl" />
@@ -71,7 +95,7 @@ const Page = () => {
               <Bs2CircleFill className="text-blue-700 text-xl" />
             )}
 
-            <span>
+            <span className=" truncate overflow-hidden whitespace-nowrap ">
               {userFileDocument?.addressfile
                 ? userFileDocument?.addressfile
                 : "Residential address confirmation"}
@@ -82,6 +106,7 @@ const Page = () => {
           <Button
             text="Submit"
             className="w-full"
+            loading={loading}
             onClick={() => VerifyUser()}
           />
         </div>

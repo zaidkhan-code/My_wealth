@@ -6,8 +6,30 @@ import Button from "../../../../components/element/Button";
 import { CiFileOn } from "react-icons/ci";
 import { useMainContext } from "@/components/Context_Api/MainContext";
 import { useRouter } from "next/navigation";
+import useApi from "../../../../util/useApi";
 const page = () => {
+  const { fetchData } = useApi();
   const { userFileDocument, setUserFileDocument } = useMainContext();
+  function fileupload(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+    fetchData(
+      "files/upload",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+      },
+      (res, status) => {
+        setUserFileDocument((prev) => ({
+          ...prev,
+          addressfile: res?.file?.fileName,
+        }));
+      }
+    );
+  }
   const router = useRouter();
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-1 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
@@ -45,7 +67,7 @@ const page = () => {
         >
           <CiFileOn size={35} color="black" />
 
-          <p className="md:text-[14px] text-[10px] text-black text-center">
+          <p className="md:text-[14px] text-[10px] text-black truncate overflow-hidden whitespace-nowrap text-center">
             {userFileDocument?.addressfile
               ? userFileDocument?.addressfile
               : "Select the files. Supported files are PNG, JPG, PDF."}
@@ -55,10 +77,7 @@ const page = () => {
             className="hidden"
             id="input"
             onChange={(e) => {
-              setUserFileDocument((prev) => ({
-                ...prev,
-                addressfile: e.target.files[0].name,
-              }));
+              fileupload(e.target.files[0]);
             }}
           />
         </div>
@@ -78,7 +97,7 @@ const page = () => {
           Terms of Service
         </a>{" "}
         apply.
-      </p>                                                                                                                                                                     
+      </p>
     </div>
   );
 };

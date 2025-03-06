@@ -15,7 +15,7 @@ const validationSchema = Yup.object({
 export default function Home() {
   const { setUserDetail } = useMainContext();
   const router = useRouter();
-  const { errors, handleSubmit, setFieldValue } = useFormik({
+  const { errors, handleSubmit, setFieldValue, isSubmitting } = useFormik({
     initialValues: {
       Referral_Code: "",
     },
@@ -85,6 +85,7 @@ export default function Home() {
         />
         <Button
           text="Next"
+          loading={isSubmitting}
           onClick={() => {
             handleSubmit();
           }}

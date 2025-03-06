@@ -6,11 +6,32 @@ import Button from "../../../../components/element/Button";
 import { CiFileOn } from "react-icons/ci";
 import { useMainContext } from "@/components/Context_Api/MainContext";
 import { useRouter } from "next/navigation";
+import useApi from "../../../../util/useApi";
 
 const page = () => {
+  const { fetchData } = useApi();
   const router = useRouter();
   const { userFileDocument, setUserFileDocument } = useMainContext();
-
+  function fileupload(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+    fetchData(
+      "files/upload",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+      },
+      (res, status) => {
+        setUserFileDocument((prev) => ({
+          ...prev,
+          idverification: res?.file?.fileName,
+        }));
+      }
+    );
+  }
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
       <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
@@ -47,7 +68,9 @@ const page = () => {
           onClick={() => document.getElementById("pdfInput")?.click()}
         >
           <CiFileOn size={40} color="black" />
-          <p className={` text-[13px] md:text-[15px] text-gray-700 truncate`}>
+          <p
+            className={` text-[13px] md:text-[15px]  truncate overflow-hidden whitespace-nowrap  text-gray-700 `}
+          >
             {userFileDocument?.idverification
               ? userFileDocument?.idverification
               : "Select files, supported file are PDF, JPG,PNG"}
@@ -58,10 +81,7 @@ const page = () => {
             className="hidden"
             id="pdfInput"
             onChange={(e) => {
-              setUserFileDocument((prev) => ({
-                ...prev,
-                idverification: e.target.files[0].name,
-              }));
+              fileupload(e.target.files[0]);
             }}
           />
         </div>

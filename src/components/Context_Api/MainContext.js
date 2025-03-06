@@ -53,12 +53,15 @@ export const AppProvider = ({ children }) => {
     );
   }
   function UploadFileForUser(file, type) {
-    
     fetchData(
       "files/upload",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
         body: JSON.stringify(payload),
       },
       (res, status) => {}
@@ -75,31 +78,12 @@ export const AppProvider = ({ children }) => {
       }
     }, 1000);
   };
-  const VerifyUser = () => {
-    let payload = {
-      email: userDetail?.email,
-    };
-    fetchData(
-      "users/verification",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      },
-      (res, status) => {
-        if (status) {
-          router.push("/user/verification");
-        }
-      }
-    );
-  };
   useEffect(() => {
     return () => clearInterval();
   }, []);
   return (
     <MainContext.Provider
       value={{
-        VerifyUser,
         testingdetails,
         setTestingdetails,
         userFileDocument,
