@@ -14,26 +14,6 @@ const Page = () => {
   const { userFileDocument, userDetail } = useMainContext();
   const [loading, setLoading] = useState(false);
 
-  const VerifyUser = () => {
-    setLoading(true);
-    let payload = {
-      email: userDetail?.email,
-    };
-    fetchData(
-      "users/verification",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      },
-      (res, status) => {
-        if (status) {
-          setLoading(false);
-          router.push("/user/verification");
-        }
-      }
-    );
-  };
   const router = useRouter();
   return (
     <div className="md:bg-[#F6F5F7] bg-white pt-3 pb-6 md:pb-14 md:pt-14  h-screen md:h-auto gap-5 flex-col justify-between  md:justify-center flex md:items-center overflow-hidden ">
@@ -107,7 +87,7 @@ const Page = () => {
             text="Submit"
             className="w-full"
             loading={loading}
-            onClick={() => VerifyUser()}
+            onClick={() => router.push("/user/verification")}
           />
         </div>
       </div>
