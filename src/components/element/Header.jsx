@@ -25,8 +25,8 @@ export default function Header() {
         <Image
           src={LoginLogo}
           alt="Login Logo"
-          width={44}
-          height={44}
+          width={100}
+          height={24}
           className="object-contain"
         />
       </div>
@@ -44,7 +44,7 @@ export default function Header() {
 
     
       <div className="flex items-center">
-  <div className="flex items-center justify-center w-4 h-4 md:w-8 md:h-8 rounded-full bg-[#70A5CE] text-white font-bold text-[8px] md:text-sm">
+  <div className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#70A5CE] text-white font-bold text-[10px] md:text-sm">
     MF
   </div>
 </div>
