@@ -14,7 +14,7 @@ const page = () => {
     const formData = new FormData();
     formData.append("file", file);
     fetchData(
-      "files/upload",
+      "api/v1/files/upload",
       {
         method: "POST",
         headers: {

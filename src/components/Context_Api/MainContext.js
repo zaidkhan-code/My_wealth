@@ -34,37 +34,24 @@ export const AppProvider = ({ children }) => {
       id_verification_url: "",
     };
     fetchData(
-      "users/register",
+      "api/v1/users/register",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       },
       (res, status) => {
+        console.log(status);
         if (status) {
           startCountdown();
           router.push("/user/otp");
           localStorage.setItem("token", res?.token);
+          localStorage.setItem("userId", res?.userId);
         } else {
           alert("some thing went wrong please fill form again");
           router.push("/");
         }
       }
-    );
-  }
-  function UploadFileForUser(file, type) {
-    fetchData(
-      "files/upload",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(payload),
-      },
-      (res, status) => {}
     );
   }
   const startCountdown = () => {
@@ -92,7 +79,6 @@ export const AppProvider = ({ children }) => {
         userDetail,
         setUserDetail,
         CreateUser,
-        UploadFileForUser,
       }}
     >
       {children}

@@ -16,6 +16,7 @@ const validationSchema = Yup.object({
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
   dob: Yup.string().required("Date of birth is required"),
+  mobileNumber: Yup.string().required("Mobile Number is required"),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
@@ -59,7 +60,7 @@ const Page = () => {
       email: email,
     };
     fetchData(
-      "users/checkUserAlreadyExist",
+      "api/v1/users/checkUserAlreadyExist",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

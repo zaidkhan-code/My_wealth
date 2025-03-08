@@ -11,6 +11,7 @@ const validationSchema = Yup.object({
   otp: Yup.string().required("please enter otp code"),
 });
 const Page = () => {
+  const router = useRouter();
   const { timeLeft, userDetail } = useMainContext();
   const { fetchData } = useApi();
   const {
@@ -31,19 +32,22 @@ const Page = () => {
         otp: values?.otp || "",
       };
       fetchData(
-        "users/verify-otp",
+        "api/v1/users/verify-otp",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         },
         (res, status) => {
-          if (status) {
+          console.log("Callback Status Received:", status, typeof status);
+          if (status === true) {
             router.push("/user/simplestep");
+            console.log("if body call and ");
             setSubmitting(false);
           } else {
             setFieldError("otp", "Otp is expired or invalid");
             setSubmitting(false);
+            console.log("else body call and ");
           }
         }
       );

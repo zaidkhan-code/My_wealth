@@ -13,15 +13,15 @@ const page = () => {
   const router = useRouter();
   const { userDetail } = useMainContext();
   const VerifyUser = () => {
-    let payload = {
+    let payloadUser = {
       email: userDetail?.email,
     };
     fetchData(
-      "users/verification",
+      "api/v1/users/verification",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(payloadUser),
       },
       (res, status) => {
         if (status) {
@@ -36,10 +36,14 @@ const page = () => {
     );
   };
   useEffect(() => {
-    VerifyUser();
+    const interval = setInterval(() => {
+      VerifyUser();
+    }, 2000);
+    return () => clearInterval(interval);
   }, []);
+
   return (
-    <div className="md:bg-[#F6F5F7] bg-white pt-7 pb-7 md:pb-14 md:pt-14  h-screen md:h-auto gap-4 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
+    <div className="md: bg-white pt-7 pb-7 md:pb-14 md:pt-14  h-screen md:h-auto gap-4 flex-col justify-between  md:justify-center flex md:items-center overflow-x-hidden ">
       <div className="md:w-[520px] w-full text-center  md:h-auto px-4 py-8  md:px-10 md:py-10 gap-10 md:gap-8 flex flex-col items-center  md:rounded-[18px] bg-white md:border-[0.5px] md:border-gray-300">
         {" "}
         <Image

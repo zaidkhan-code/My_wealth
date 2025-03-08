@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 const Input = ({ label, placeholder, error = "", type = "text", ...props }) => {
-  console.log(type, "check type please");
   return (
     <div className="flex w-full flex-col items-start gap-1">
       <label className=" text-[14px] font-bold text-gray-700">{label}</label>

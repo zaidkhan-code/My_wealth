@@ -21,12 +21,14 @@ const useApi = () => {
 
         const data = await res.json();
         response = data;
+        const status = res.ok;
 
         // if (data?.message === "logouted") {
         //   router.push("/login");
         // }
-
-        callBack(data, true);
+        if (res.ok) {
+          callBack(data, status);
+        }
 
         if (!res.ok) {
           throw new Error(data.message || "Something went wrong");
@@ -34,7 +36,7 @@ const useApi = () => {
       } catch (err) {
         error = err;
         callBack(err, false);
-        console.log(err, "check e");
+        console.log(err, "check api callback");
 
         if (err?.message === "unauthenticated") {
           router.push("/login");
