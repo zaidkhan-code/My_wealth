@@ -29,9 +29,9 @@ const LoginPage = () => {
             type="password"
           />
        
-        <div className="w-full">
+        <div className="w-full mt-10">
           <Button
-            text="Log In"
+            text="Log in"
           />
         </div>
       </div>
